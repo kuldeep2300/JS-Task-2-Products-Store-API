@@ -67,6 +67,12 @@ body {
     object-fit: cover;
   }
 
+.title {
+    font-size: 18px;
+    text-align: center;
+    /* padding: 0px 15px; */
+}
+
 .price {
     text-decoration: line-through;
     color: gray;
@@ -116,4 +122,9 @@ body {
 .btnContainer .addToCartBtn {
     color: white;
     background-color: #001442;
+}
+
+.description {
+    padding: 10px;
+    line-height: 1.3rem;
 }
