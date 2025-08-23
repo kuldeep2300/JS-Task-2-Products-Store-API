@@ -13,6 +13,18 @@ const renderCards = (array) => {
     let discountPrice =
       product.price - (product.price / 100) * product.discountPercentage;
 
+    // Rating part
+    let fullStars = Math.floor(product.rating);
+    let emptyStars = 5 - fullStars;
+
+    let stars = "";
+    for (let i = 0; i < fullStars; i++) {
+      stars += `<i class="fa-solid fa-star" style="color: #ffc74a;"></i>`;
+    }
+    for (let i = 0; i < emptyStars; i++) {
+      stars += `<i class="fa-regular fa-star"></i>`;
+    }
+
     cardElem.innerHTML = `
       <div class="card">
             <div class="imgContainer">
@@ -26,7 +38,7 @@ const renderCards = (array) => {
             <p class="discountPercentage">save ${
               product.discountPercentage
             }%</p>
-            <p class="rating"></p>
+            <p class="rating">${stars}</p>
 
             <div class="btnContainer">
                 <button class="showDescBtn">Show Description</button>
@@ -56,10 +68,6 @@ const renderCards = (array) => {
   });
 };
 
-//? Printing star
-const handlePrintingRating = () => {
-
-}
 
 //? Fetching API Data
 const fetchAPI = async () => {
@@ -76,6 +84,7 @@ const fetchAPI = async () => {
 };
 
 //? Sorting price low to high button
+
 const handleSortPriceLowHigh = () => {
   let priceAscArray = JSON.parse(JSON.stringify(allProducts));
   priceAscArray = priceAscArray.sort((a, b) => a.price - b.price);
@@ -91,6 +100,7 @@ const handleSortPriceLowHigh = () => {
 };
 
 //? Sorting price high to low button
+
 const handleSortPriceHighLow = () => {
   let priceDesArray = JSON.parse(JSON.stringify(allProducts));
   priceDesArray = priceDesArray.sort((a, b) => b.price - a.price);
@@ -106,9 +116,10 @@ const handleSortPriceHighLow = () => {
 };
 
 //? Sorting rating high to low button
+
 const handleSortRating = () => {
   let ratingAcsArray = JSON.parse(JSON.stringify(allProducts));
-  ratingAcsArray = ratingAcsArray.sort((a, b) => a.rating - b.rating);
+  ratingAcsArray = ratingAcsArray.sort((a, b) => b.rating - a.rating);
   // Re-render sorting arr
   renderCards(ratingAcsArray);
 
