@@ -8,16 +8,51 @@
     <script src="https://kit.fontawesome.com/8fa4b903ad.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <form action="" class="search-container">
+    <div class="container">
+        <!-- Sidebar -->
+         <aside class="sidebar">
+            <div class="categories">
+                <div class="category">
+                    <label for="">Radio-1</label>
+                    <input type="radio" name="" id="">
+                </div>
+                <div class="category">
+                    <label for="">Radio-1</label>
+                    <input type="radio" name="" id="">
+                </div>
+                <div class="category">
+                    <label for="">Radio-1</label>
+                    <input type="radio" name="" id="">
+                </div>
+                <div class="category">
+                    <label for="">Radio-1</label>
+                    <input type="radio" name="" id="">
+                </div>
+                <div class="category">
+                    <label for="">Radio-1</label>
+                    <input type="radio" name="" id="">
+                </div>
+
+                <button class="clearCategory">Clear All the Category</button>
+            </div>
+         </aside>
         
-    </form>
-    <div class="sort-buttons">
-        <button id="sortPriceLowHigh">Sort by price (Low to High)</button>
-        <button id="sortPriceHighLow">Sort by price (High to Low)</button>
-        <button id="sortRating">Sort by rating (High to Low)</button>
-    </div>
-    <div id="products" class="product-grid">
-        <!-- cards will be inserted by JS -->
+         <!-- Main section on right side -->
+        <section class="main">
+            <form class="search-container">
+                <input type="text" name="searchInput" id="searchInput" placeholder="Search Products...">
+                <button type="submit" class="searchBtn">Search</button>
+                <button class="clearBtn">Clear Search</button>
+            </form>
+            <div class="sort-buttons">
+                <button id="sortPriceLowHigh">Sort by price (Low to High)</button>
+                <button id="sortPriceHighLow">Sort by price (High to Low)</button>
+                <button id="sortRating">Sort by rating (High to Low)</button>
+            </div>
+            <div id="products" class="product-grid">
+                <!-- cards will be inserted by JS -->
+            </div>
+        </section>
     </div>
     <script src="script.js"></script>
 </body>

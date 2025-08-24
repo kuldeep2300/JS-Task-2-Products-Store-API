@@ -3,9 +3,19 @@ const priceLowHigh = document.getElementById("sortPriceLowHigh");
 const priceHighLow = document.getElementById("sortPriceHighLow");
 const ratingHighLow = document.getElementById("sortRating");
 
+const form = document.querySelector("form");
+const searchInput = document.querySelector("#searchInput");
+const searchBtn = document.querySelector(".searchBtn");
+const clearBtn = document.querySelector(".clearBtn");
+
 let allProducts = [];
 
-//? Rendering cards in product-container
+//* Preventing form default behavior
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+});
+
+//* Rendering cards in product-container
 const renderCards = (array) => {
   products.innerHTML = "";
   array.forEach((product) => {
@@ -68,8 +78,30 @@ const renderCards = (array) => {
   });
 };
 
+//* Search Functionality
+const handleSearch = async () => {
+  let query = searchInput.value.trim();
 
-//? Fetching API Data
+  if (query.length < 1) {
+    return;
+  }
+
+  let API = `https://dummyjson.com/products/search?q=${query}`;
+  let response = await fetch(API);
+  let data = await response.json();
+
+  renderCards(data.products);
+};
+
+searchBtn.addEventListener("click", handleSearch);
+
+//* Clear Search Functionality
+clearBtn.addEventListener("click", () => {
+  searchInput.value = "";
+  renderCards(allProducts);
+});
+
+//* Fetching API Data
 const fetchAPI = async () => {
   let API_URL = "https://dummyjson.com/products?limit=15";
   try {
@@ -83,8 +115,7 @@ const fetchAPI = async () => {
   }
 };
 
-//? Sorting price low to high button
-
+//* Sorting price low to high button
 const handleSortPriceLowHigh = () => {
   let priceAscArray = JSON.parse(JSON.stringify(allProducts));
   priceAscArray = priceAscArray.sort((a, b) => a.price - b.price);
@@ -99,8 +130,7 @@ const handleSortPriceLowHigh = () => {
   priceLowHigh.style.cssText = "background-color: blue; color: white;";
 };
 
-//? Sorting price high to low button
-
+//* Sorting price high to low button
 const handleSortPriceHighLow = () => {
   let priceDesArray = JSON.parse(JSON.stringify(allProducts));
   priceDesArray = priceDesArray.sort((a, b) => b.price - a.price);
@@ -115,8 +145,7 @@ const handleSortPriceHighLow = () => {
   priceHighLow.style.cssText = "background-color: blue; color: white;";
 };
 
-//? Sorting rating high to low button
-
+//* Sorting rating high to low button
 const handleSortRating = () => {
   let ratingAcsArray = JSON.parse(JSON.stringify(allProducts));
   ratingAcsArray = ratingAcsArray.sort((a, b) => b.rating - a.rating);
@@ -131,7 +160,7 @@ const handleSortRating = () => {
   ratingHighLow.style.cssText = "background-color: blue; color: white;";
 };
 
-//? Event Listeners on the buttons
+//* Event Listeners on the buttons
 priceLowHigh.addEventListener("click", handleSortPriceLowHigh);
 priceHighLow.addEventListener("click", handleSortPriceHighLow);
 ratingHighLow.addEventListener("click", handleSortRating);
