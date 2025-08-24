@@ -1,59 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Product Store - API</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/8fa4b903ad.js" crossorigin="anonymous"></script>
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/8fa4b903ad.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
     <div class="container">
-        <!-- Sidebar -->
-         <aside class="sidebar">
-            <div class="categories">
-                <div class="category">
-                    <label for="">Radio-1</label>
-                    <input type="radio" name="" id="">
-                </div>
-                <div class="category">
-                    <label for="">Radio-1</label>
-                    <input type="radio" name="" id="">
-                </div>
-                <div class="category">
-                    <label for="">Radio-1</label>
-                    <input type="radio" name="" id="">
-                </div>
-                <div class="category">
-                    <label for="">Radio-1</label>
-                    <input type="radio" name="" id="">
-                </div>
-                <div class="category">
-                    <label for="">Radio-1</label>
-                    <input type="radio" name="" id="">
-                </div>
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <button class="clearCategory">
+          Clear All the Category
+        </button>
+        <div class="categories"></div>
+      </aside>
 
-                <button class="clearCategory">Clear All the Category</button>
-            </div>
-         </aside>
-        
-         <!-- Main section on right side -->
-        <section class="main">
-            <form class="search-container">
-                <input type="text" name="searchInput" id="searchInput" placeholder="Search Products...">
-                <button type="submit" class="searchBtn">Search</button>
-                <button class="clearBtn">Clear Search</button>
-            </form>
-            <div class="sort-buttons">
-                <button id="sortPriceLowHigh">Sort by price (Low to High)</button>
-                <button id="sortPriceHighLow">Sort by price (High to Low)</button>
-                <button id="sortRating">Sort by rating (High to Low)</button>
-            </div>
-            <div id="products" class="product-grid">
-                <!-- cards will be inserted by JS -->
-            </div>
-        </section>
+      <!-- Main section on right side -->
+      <section class="main">
+        <form class="search-container">
+          <input
+            type="text"
+            name="searchInput"
+            id="searchInput"
+            placeholder="Search Products..."
+          />
+          <button type="submit" class="searchBtn">Search</button>
+          <button class="clearSearch">Clear Search</button>
+        </form>
+        <div class="sort-buttons">
+          <button id="sortPriceLowHigh">Sort by price (Low to High)</button>
+          <button id="sortPriceHighLow">Sort by price (High to Low)</button>
+          <button id="sortRating">Sort by rating (High to Low)</button>
+        </div>
+        <div id="products" class="product-grid">
+          <!-- cards will be inserted by JS -->
+        </div>
+      </section>
     </div>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
